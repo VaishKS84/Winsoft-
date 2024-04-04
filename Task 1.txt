@@ -1,0 +1,16 @@
+public class MergeArrays {
+    public static void mergeArrays(int[] X, int[] Y) {
+        int m = X.length, n = Y.length, k = m - n;
+        while (--k >= 0) X[n + k] = X[k];
+        for (int i = n, j = 0, idx = 0; i < m && j < n;) X[idx++] = (X[i] < Y[j]) ? X[i++] : Y[j++];
+        while (j < n) X[idx++] = Y[j++];
+    }
+    
+    public static void main(String[] args) {
+        int[] X = { 0, 2, 0, 3, 0, 5, 6, 0, 0 };
+        int[] Y = { 1, 8, 9, 10, 15 };
+        
+        mergeArrays(X, Y);
+        for (int num : X) System.out.print(num + " ");
+    }
+}
